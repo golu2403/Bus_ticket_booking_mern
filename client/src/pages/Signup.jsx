@@ -20,6 +20,37 @@ const [errorMessage, setErrorMessage] = useState('');
     console.log(e.target.value);
   setuserinfo({ ...userinfo, [e.target.id]: e.target.value.trim() });
 };
+  
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  if (!userinfo.name || !userinfo.email || !userinfo.password ||!userinfo.age ||!userinfo.gender||!userinfo.mobile||!userinfo.DOB) {
+    return setErrorMessage('Please fill out all fields.');
+  }
+  try {
+    const response = await fetch(`http://localhost:3000/signup`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(userinfo),
+    });
+
+    if (response.ok) {
+      console.log("Signup successful");
+    } else {
+      const errorData = await response.json();
+      setErrorMessage(errorData.message || 'Signup failed');
+    }
+  } catch (error) {
+    console.log(error);
+    setErrorMessage('An error occurred. Please try again.');
+  }
+};
+
+
+
+
+
 
 
 
@@ -39,7 +70,7 @@ const [errorMessage, setErrorMessage] = useState('');
         <div className="col-md-6 d-flex align-items-center justify-content-center p-5">
           <div className="signup-form-container p-5 rounded shadow">
             <h2 className="text-center mb-4">Sign Up</h2>
-            <form>
+            <form onSubmit={handleSubmit}>
               <div className="mb-3">
                 <label htmlFor="name" className="form-label">Name</label>
                 <input type="text" className="form-control" id='name' placeholder="Enter your name" onChange={handleInput} required />
