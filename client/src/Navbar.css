@@ -1,0 +1,27 @@
+.navbar-brand img {
+    width: 120px; /* Adjust the logo size as needed */
+}
+
+.nav-link {
+    font-size: 1rem;
+    padding-right: 1rem;
+    color: #000;
+}
+
+.nav-link:hover {
+    color: #e74c3c;
+}
+
+.form-inline .form-control {
+    width: 200px; /* Adjust the search bar width as needed */
+}
+
+.form-inline .btn {
+    background-color: #e74c3c;
+    border: none;
+    color: white;
+}
+
+.form-inline .btn:hover {
+    background-color: #c0392b;
+}
