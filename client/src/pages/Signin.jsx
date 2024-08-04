@@ -8,13 +8,11 @@ const SignIn = () => {
     password: ""
   });
   const [errorMessage, setErrorMessage] = useState('');
-  const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
 
   const handleInput = (e) => {
     setUserinfo({ ...userinfo, [e.target.id]: e.target.value });
-    setErrorMessage(''); // Clear error message on new input
   };
 
   const handleSubmit = async (e) => {
@@ -22,7 +20,6 @@ const SignIn = () => {
     if (!userinfo.email || !userinfo.password) {
       return setErrorMessage('Please fill out all fields.');
     }
-    setLoading(true);
     try {
       const response = await fetch(`http://localhost:8000/signin`, {
         method: "POST",
@@ -32,57 +29,37 @@ const SignIn = () => {
         body: JSON.stringify(userinfo),
       });
       const data = await response.json();
-      setLoading(false);
       if (data.valid === 1) {
         navigate("/");
       } else {
-        setErrorMessage(data.message || "Invalid user credentials");
+        setErrorMessage("Invalid user credentials");
       }
     } catch (error) {
-      setLoading(false);
-      console.error(error);
+      console.log(error);
       setErrorMessage('An error occurred. Please try again.');
     }
   };
 
   return (
-    <div className="d-flex justify-content-center align-items-center vh-100" style={{ backgroundImage: "url('https://upload.wikimedia.org/wikipedia/commons/d/dc/Millennium_Depot_1.jpg')", backgroundSize: 'cover' }}>
+    <div className="d-flex justify-content-center align-items-center vh-100" style={{ backgroundImage: "url('https://res.cloudinary.com/globes/image/upload/t_800X392/v1624885267/direct/shutterstock_1653066394%D7%90%D7%A7%D7%9C%D7%99%D7%9D_qgekx3.jpg')", backgroundSize: 'cover', paddingBottom: '100px' }}>
       <div className="card p-4" style={{ maxWidth: '400px', width: '100%', background: 'rgba(255, 255, 255, 0.9)' }}>
         <div className="card-body">
           <h2 className="text-center mb-4">Sign In</h2>
-          {errorMessage && <div className="alert alert-danger" role="alert">{errorMessage}</div>}
+          {errorMessage && <div className="alert alert-danger">{errorMessage}</div>}
           <form onSubmit={handleSubmit}>
             <div className="mb-3">
               <label htmlFor="email" className="form-label">Email address</label>
-              <input
-                type="email"
-                className={`form-control ${errorMessage && !userinfo.email ? 'is-invalid' : ''}`}
-                id="email"
-                placeholder="Enter your email"
-                onChange={handleInput}
-                value={userinfo.email}
-              />
-              {!userinfo.email && errorMessage && <div className="invalid-feedback">Email is required.</div>}
+              <input type="email" className="form-control" id="email" placeholder="Enter your email" onChange={handleInput} />
             </div>
             <div className="mb-3">
               <label htmlFor="password" className="form-label">Password</label>
-              <input
-                type="password"
-                className={`form-control ${errorMessage && !userinfo.password ? 'is-invalid' : ''}`}
-                id="password"
-                placeholder="Enter your password"
-                onChange={handleInput}
-                value={userinfo.password}
-              />
-              {!userinfo.password && errorMessage && <div className="invalid-feedback">Password is required.</div>}
+              <input type="password" className="form-control" id="password" placeholder="Enter your password" onChange={handleInput} />
             </div>
-            <button type="submit" className="btn btn-primary w-100" disabled={loading}>
-              {loading ? 'Signing In...' : 'Sign In'}
-            </button>
+            <button type="submit" className="btn btn-primary w-100">Sign In</button>
           </form>
          
           <p className="text-center">
-            Don't have an account? <a href='/signup'>Sign Up</a>
+            Don't have an account? <a href="/signup">Sign Up</a>
           </p>
         </div>
       </div>

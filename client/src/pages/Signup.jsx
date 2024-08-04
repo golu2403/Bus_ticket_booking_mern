@@ -73,7 +73,7 @@ const Signup = () => {
     <div className="container-fluid vh-100 d-flex align-items-center justify-content-center signup-page">
       <div className="row w-100 no-gutters">
         <div className="col-md-6 d-none d-md-flex align-items-center justify-content-center p-0">
-          <img src='/signup_bus.jpg' alt="Bus" className="img-fluid bus-image" />
+          <img src='/logo.jpg' alt="Bus" className="img-fluid bus-image" />
         </div>
         <div className="col-md-6 d-flex align-items-center justify-content-center p-5">
           <div className="signup-form-container p-5 rounded shadow">

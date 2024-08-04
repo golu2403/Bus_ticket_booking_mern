@@ -1,0 +1,40 @@
+/* footer.css */
+html, body {
+    height: 100%;
+    margin: 0px;
+
+  }
+  
+  #root {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+   
+  }
+  
+  .footer {
+  
+    background: linear-gradient(45deg, #1d2b64, #f8cdda);
+    color: white;
+    padding: 20px ;
+  }
+  
+  .footer a {
+    color: white;
+    transition: color 0.3s;
+  }
+  
+  .footer a:hover {
+    color: #ffd700;
+  }
+  
+  .footer .social-icons i {
+    font-size: 1.5rem;
+    margin-right: 10px;
+    transition: transform 0.3s;
+  }
+  
+  .footer .social-icons i:hover {
+    transform: scale(1.2);
+  }
+  

@@ -6,11 +6,13 @@ import Home from "./pages/Home";
 import About from "./pages/About"
 import Signup from './pages/Signup';
 import Signin from './pages/Signin';
-import './App.css';
+
 export default function App() {
   return (
     <div>
         <BrowserRouter>
+        <div className='app'>
+        <div className="content">
        <Navbar />
         <Routes>
         <Route path="/" element={<Home />}></Route> 
@@ -18,8 +20,9 @@ export default function App() {
         <Route path="/signup" element={<Signup />}></Route>
         <Route path="/signin" element={<Signin />}></Route>
         </Routes>
-
-        <Footer />
+            </div>
+        
+        </div>
       </BrowserRouter>
    
          
