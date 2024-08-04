@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import './Signup.css'; // Custom CSS for additional styling
 
 const Signup = () => {
@@ -14,9 +16,15 @@ const Signup = () => {
 
   const [errorMessage, setErrorMessage] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
+  const navigate = useNavigate(); // Initialize useNavigate
 
   const handleInput = (e) => {
-    setUserinfo({ ...userinfo, [e.target.id]: e.target.value.trim() });
+    const { id, value } = e.target;
+    setUserinfo((prevUserinfo) => ({
+      ...prevUserinfo,
+      [id]: id === 'DOB' ? value : value.trim()
+    }));
+
   };
 
   const handleSubmit = async (e) => {
@@ -45,10 +53,10 @@ const Signup = () => {
       });
 
       if (response.ok) {
-        console.log("Signup successful");
+       
         setSuccessMessage('Signup successful');
         setErrorMessage('');
-        
+        navigate('/signin')
         // Optionally redirect to another page
       } else {
         const errorData = await response.json();
@@ -104,7 +112,7 @@ const Signup = () => {
               <button type="submit" className="btn btn-primary w-100">Sign Up</button>
             </form>
             <p className="text-center mt-3">
-              Already have an account? <a href="/login">Login here</a>
+              Already have an account? <a href="/signin">Login here</a>
             </p>
           </div>
         </div>
