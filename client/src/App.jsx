@@ -21,7 +21,7 @@ export default function App() {
         <Route path="/signin" element={<Signin />}></Route>
         </Routes>
             </div>
-        
+          <Footer />
         </div>
       </BrowserRouter>
    
