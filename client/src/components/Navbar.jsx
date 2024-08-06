@@ -21,26 +21,15 @@ const Navbar = () => {
                             <a className="nav-link" href="#">Bus Tickets</a>
                         </li>
                         <li className="nav-item mx-2">
-                            <a className="nav-link" href="#">Hotels</a>
+                            <a className="nav-link" href="#">SignUp</a>
                         </li>
                         <li className="nav-item mx-2">
-                            <a className="nav-link" href="#">Offers</a>
-                        </li>
-                        <li className="nav-item mx-2">
-                            <a className="nav-link" href="#">Help</a>
+                            <a className="nav-link" href="#">SignIn</a>
                         </li>
                         <li className="nav-item mx-2">
                             <a className="nav-link" href="#">My Account</a>
                         </li>
                     </div>
-                    <form className="form-inline">
-                        <div className="input-group">
-                            <input className="form-control" type="search" placeholder="Search" aria-label="Search" />
-                            <div className="input-group-append">
-                            <button className="btn btn-outline-success" type="submit" style={{ marginLeft: '10px' }}>Search</button>
-                            </div>
-                        </div>
-                    </form>
                 </ul>
             </div>
         </nav>
