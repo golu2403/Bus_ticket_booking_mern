@@ -72,7 +72,7 @@ const Signup = () => {
   return (
     <div className="container-fluid vh-100 d-flex align-items-center justify-content-center signup-page">
       <div className="row w-100 no-gutters">
-        <div className="col-md-6 d-none d-md-flex align-items-center justify-content-center p-0">
+        <div className="col-md-5 d-none d-md-flex align-items-center justify-content-center p-0">
           <img src='/logo.jpg' alt="Bus" className="img-fluid bus-image" />
         </div>
         <div className="col-md-6 d-flex align-items-center justify-content-center p-5">
@@ -104,7 +104,7 @@ const Signup = () => {
               <div className="mb-3">
                 <label htmlFor="DOB" className="form-label">Date of Birth</label>
                 <input type="date" className="form-control" id="DOB" onChange={handleInput} value={userinfo.DOB} />
-              </div>
+              </div>
               <div className="mb-3">
                 <label htmlFor="mobile" className="form-label">Mobile Number</label>
                 <input type="tel" className="form-control" id="mobile" placeholder="Enter your mobile number" onChange={handleInput} value={userinfo.mobile} />
