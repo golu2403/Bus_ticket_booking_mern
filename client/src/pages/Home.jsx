@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import Searchform from '../components/Searchform';
 import Busdetail from '../components/Busdetail.jsx';
 import './home.css';
@@ -7,16 +6,38 @@ import './home.css';
 const Home = () => {
   const [busDetails, setBusDetails] = useState([]);
 
-  const fetchBusDetails = async (fromStation, toStation, travelDate) => {
-    const apiKey = 'YOUR_API_KEY'; // Replace with your actual API key
-    const apiUrl = `https://api.abhibus.com/v1/search?source=${fromStation}&destination=${toStation}&journeyDate=${travelDate}&apiKey=${apiKey}`;
+  // Static data representing bus details
+  const staticBusData = [
+    {
+      id: 1,
+      fromStation: 'Station A',
+      toStation: 'Station B',
+      travelDate: '2024-08-10',
+      departureTime: '08:00 AM',
+      arrivalTime: '10:00 AM',
+      price: '$30'
+    },
+    {
+      id: 2,
+      fromStation: 'Station A',
+      toStation: 'Station B',
+      travelDate: '2024-08-10',
+      departureTime: '12:00 PM',
+      arrivalTime: '02:00 PM',
+      price: '$35'
+    },
+    
+  ];
 
-    try {
-      const response = await axios.get(apiUrl);
-      setBusDetails(response.data.buses);
-    } catch (error) {
-      console.error('Error fetching bus details:', error);
-    }
+  const fetchBusDetails = (fromStation, toStation, travelDate) => {
+    // Filter static data based on search criteria
+    const filteredBuses = staticBusData.filter(
+      bus =>
+        bus.fromStation === fromStation &&
+        bus.toStation === toStation &&
+        bus.travelDate === travelDate
+    );
+    setBusDetails(filteredBuses);
   };
 
   return (

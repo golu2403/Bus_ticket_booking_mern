@@ -43,6 +43,7 @@ const usersignIn = async (req, res) => {
 
     if (isValid) {
       return res.status(200).json({ valid: 1, message: 'Sign-in successful.' });
+      
     } else {
       return res.status(401).json({ valid: 0, message: 'Invalid email or password.' });
     }
@@ -52,7 +53,7 @@ const usersignIn = async (req, res) => {
   }
 };
 
-module.exports = usersignIn;
+
 
 
 const addEvent=async(req,res)=>{

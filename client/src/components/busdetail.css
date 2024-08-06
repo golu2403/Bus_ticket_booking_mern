@@ -1,0 +1,16 @@
+.bus-detail {
+    margin-top: 20px;
+  }
+  
+  .bus-item {
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+  }
+  
+  .bus-item h2 {
+    margin: 0;
+    font-size: 1.2em;
+  }
+  
