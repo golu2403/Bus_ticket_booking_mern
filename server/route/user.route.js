@@ -1,20 +1,25 @@
-const express=require("express")
-const {home,usersignUp,usersignIn,addEvent}=require('../controller/user.auth');
-const { busdetails } = require("../controller/busdetail.auth");
-const router=express.Router();
-//All routes defiine
+const express = require('express');
+const { home, usersignUp, usersignIn, addEvent } = require('../controller/user.auth');
+const { busdetails, getbusinfo } = require('../controller/busdetail.auth');
 
-router.route('/').get(home)
+const router = express.Router();
 
+// Home route
+router.route('/').get(home);
+
+// Sign In route - Changed to POST
 router.route('/signin').post(usersignIn);
 
-router.route("/signup").post(usersignUp)
+// Sign Up route
+router.route('/signup').post(usersignUp);
 
-router.route("/addevent").post(addEvent)
+// Add Event route
+router.route('/addevent').post(addEvent);
 
-router.route("/busdetail").post(busdetails)
+// Bus details route
+router.route('/api/busdetail').post(busdetails);
 
-// router.route("/searchname").post(searchName)
+// Get bus info route
+router.route('/api/getbusinfo').get(getbusinfo);
 
-
-module.exports=router;
+module.exports = router;

@@ -1,43 +1,23 @@
 import React, { useState } from 'react';
 import Searchform from '../components/Searchform';
-import Busdetail from '../components/Busdetail.jsx';
+import Busdetail from '../components/Busdetail';
 import './home.css';
 
 const Home = () => {
   const [busDetails, setBusDetails] = useState([]);
 
-  // Static data representing bus details
-  const staticBusData = [
-    {
-      id: 1,
-      fromStation: 'Station A',
-      toStation: 'Station B',
-      travelDate: '2024-08-10',
-      departureTime: '08:00 AM',
-      arrivalTime: '10:00 AM',
-      price: '$30'
-    },
-    {
-      id: 2,
-      fromStation: 'Station A',
-      toStation: 'Station B',
-      travelDate: '2024-08-10',
-      departureTime: '12:00 PM',
-      arrivalTime: '02:00 PM',
-      price: '$35'
-    },
-    
-  ];
-
-  const fetchBusDetails = (fromStation, toStation, travelDate) => {
-    // Filter static data based on search criteria
-    const filteredBuses = staticBusData.filter(
-      bus =>
-        bus.fromStation === fromStation &&
-        bus.toStation === toStation &&
-        bus.travelDate === travelDate
-    );
-    setBusDetails(filteredBuses);
+  const fetchBusDetails = async (fromStation, toStation, travelDate) => {
+    try {
+      const response = await fetch(`http://localhost:8000/api/getbusinfo?source=${fromStation}&destination=${toStation}&date=${travelDate}`);
+      if (response.ok) {
+        const data = await response.json();
+        setBusDetails(data);
+      } else {
+        console.error('Failed to fetch bus details:', response.statusText);
+      }
+    } catch (error) {
+      console.error('Error fetching bus details:', error);
+    }
   };
 
   return (

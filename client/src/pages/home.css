@@ -1,36 +1,27 @@
-/* Styling for the hero section */
 .hero-section {
-    background: url('../assets/Bus_main.png') no-repeat center center;
-    background-size: cover;
-    height: 400px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    color: black;
-  }
-  
-  .hero-content {
-    background-color: rgba(255, 255, 255, 0.9);
-    padding: 20px;
-    border-radius: 10px;
-  }
-  
-  .search-form .form-control {
-    border-radius: 10px;
-  }
-  
-  .btn-primary {
-    background-color: #ff5a5f;
-    border-color: #ff5a5f;
-  }
-  
-  .card {
-    margin-bottom: 20px;
-  }
-  
-  .card img {
-    height: 200px;
-    object-fit: cover;
-  }
-  
+  background-image: url('../assets/Bus_main.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 50px 0;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* Ensures the section takes up at least the full viewport height */
+}
+
+.hero-content {
+  background: rgba(255, 255, 255, 0.8); /* Semi-transparent background for contrast */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 800px;
+}
+
+.hero-content h1 {
+  margin-bottom: 20px;
+  font-size: 2.5em;
+  color: #333; /* Text color for better readability */
+}

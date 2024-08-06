@@ -1,16 +1,49 @@
-.bus-detail {
-    margin-top: 20px;
-  }
-  
-  .bus-item {
-    border: 1px solid #ddd;
-    padding: 15px;
-    margin-bottom: 10px;
-    border-radius: 5px;
-  }
-  
-  .bus-item h2 {
-    margin: 0;
-    font-size: 1.2em;
-  }
-  
+/* Container and card styling */
+.container {
+  margin-top: 20px;
+}
+
+.card {
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: #f8f9fa; /* Light color background for the card */
+  margin-bottom: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Heading styling */
+.card-header {
+  background-color: #007bff; /* Primary Bootstrap color */
+  color: #fff;
+  padding: 15px;
+  font-size: 1.25rem;
+  text-align: center;
+}
+
+/* Card body styling */
+.card-body {
+  padding: 15px;
+}
+
+.card-title {
+  font-size: 1.25rem;
+  margin-bottom: 0.75rem;
+  font-weight: bold; /* Bold title */
+}
+
+.card-text {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  font-weight: 500; /* Slightly bold text for keys */
+}
+
+/* Button styling */
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+  border-color: #004085;
+}

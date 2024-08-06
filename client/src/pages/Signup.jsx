@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-
 import './Signup.css'; // Custom CSS for additional styling
 
 const Signup = () => {
@@ -16,7 +15,7 @@ const Signup = () => {
 
   const [errorMessage, setErrorMessage] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
-  const navigate = useNavigate(); // Initialize useNavigate
+  const navigate = useNavigate();
 
   const handleInput = (e) => {
     const { id, value } = e.target;
@@ -24,22 +23,17 @@ const Signup = () => {
       ...prevUserinfo,
       [id]: id === 'DOB' ? value : value.trim()
     }));
-
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Submitting form with data:", userinfo);
-    
     if (!userinfo.name || !userinfo.email || !userinfo.password || !userinfo.age || !userinfo.mobile || !userinfo.DOB) {
       setErrorMessage('Please fill out all fields.');
-      console.log("Form submission failed: Not all fields are filled.");
       return;
     }
 
     if (userinfo.password !== userinfo.confirmPassword) {
       setErrorMessage('Passwords do not match.');
-      console.log("Form submission failed: Passwords do not match.");
       return;
     }
 
@@ -52,19 +46,16 @@ const Signup = () => {
         body: JSON.stringify(userinfo),
       });
 
+      const data = await response.json();
       if (response.ok) {
-       
         setSuccessMessage('Signup successful');
         setErrorMessage('');
-        navigate('/signin')
-        // Optionally redirect to another page
+        localStorage.setItem('token', data.token); // Store the token
+        navigate('/signin');
       } else {
-        const errorData = await response.json();
-        setErrorMessage(errorData.message || 'Signup failed');
-        console.log("Signup failed:", errorData.message || 'Signup failed');
+        setErrorMessage(data.message || 'Signup failed');
       }
     } catch (error) {
-      console.error("Error occurred during signup:", error);
       setErrorMessage('An error occurred. Please try again.');
     }
   };

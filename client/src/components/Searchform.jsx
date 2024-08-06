@@ -1,6 +1,5 @@
-// Searchform.jsx
 import React, { useState } from 'react';
-import './searchform.css'; // Optional: for styling
+import './searchform.css'; // Import the CSS file for styling
 
 const Searchform = ({ onSearch }) => {
   const [fromStation, setFromStation] = useState('');
@@ -9,46 +8,44 @@ const Searchform = ({ onSearch }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (fromStation && toStation && travelDate) {
-      onSearch(fromStation, toStation, travelDate);
-    } else {
-      alert('Please fill in all fields');
-    }
+    onSearch(fromStation, toStation, travelDate);
   };
 
   return (
     <form onSubmit={handleSubmit} className="search-form">
-      <div>
-        <label htmlFor="fromStation">From:</label>
+      <div className="form-group">
+        <label>From:</label>
         <input
           type="text"
-          id="fromStation"
           value={fromStation}
           onChange={(e) => setFromStation(e.target.value)}
           required
+          className="form-control"
+          placeholder="Enter source station"
         />
       </div>
-      <div>
-        <label htmlFor="toStation">To:</label>
+      <div className="form-group">
+        <label>To:</label>
         <input
           type="text"
-          id="toStation"
           value={toStation}
           onChange={(e) => setToStation(e.target.value)}
           required
+          className="form-control"
+          placeholder="Enter destination station"
         />
       </div>
-      <div>
-        <label htmlFor="travelDate">Date:</label>
+      <div className="form-group">
+        <label>Travel Date:</label>
         <input
           type="date"
-          id="travelDate"
           value={travelDate}
           onChange={(e) => setTravelDate(e.target.value)}
           required
+          className="form-control"
         />
       </div>
-      <button type="submit">Search</button>
+      <button type="submit" className="search-button">Search Bus</button>
     </form>
   );
 };

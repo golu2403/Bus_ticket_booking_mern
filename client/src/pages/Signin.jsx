@@ -8,7 +8,6 @@ const SignIn = () => {
     password: ""
   });
   const [errorMessage, setErrorMessage] = useState('');
-
   const navigate = useNavigate();
 
   const handleInput = (e) => {
@@ -21,7 +20,7 @@ const SignIn = () => {
       return setErrorMessage('Please fill out all fields.');
     }
     try {
-      const response = await fetch(`http://localhost:8000/signin`, {
+      const response = await fetch('http://localhost:8000/signin', {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -30,6 +29,7 @@ const SignIn = () => {
       });
       const data = await response.json();
       if (data.valid === 1) {
+        localStorage.setItem('token', data.token); // Store the token
         navigate("/");
       } else {
         setErrorMessage("Invalid user credentials");
@@ -49,16 +49,29 @@ const SignIn = () => {
           <form onSubmit={handleSubmit}>
             <div className="mb-3">
               <label htmlFor="email" className="form-label">Email address</label>
-              <input type="email" className="form-control" id="email" placeholder="Enter your email" onChange={handleInput} />
+              <input 
+                type="email" 
+                className="form-control" 
+                id="email" 
+                placeholder="Enter your email" 
+                onChange={handleInput} 
+                value={userinfo.email}
+              />
             </div>
             <div className="mb-3">
               <label htmlFor="password" className="form-label">Password</label>
-              <input type="password" className="form-control" id="password" placeholder="Enter your password" onChange={handleInput} />
+              <input 
+                type="password" 
+                className="form-control" 
+                id="password" 
+                placeholder="Enter your password" 
+                onChange={handleInput} 
+                value={userinfo.password}
+              />
             </div>
             <button type="submit" className="btn btn-primary w-100">Sign In</button>
           </form>
-         
-          <p className="text-center">
+          <p className="text-center mt-3">
             Don't have an account? <a href="/signup">Sign Up</a>
           </p>
         </div>
