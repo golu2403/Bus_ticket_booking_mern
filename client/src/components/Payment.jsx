@@ -31,6 +31,7 @@ const Payment = () => {
           <p className="card-text">QR Code for Payment:</p>
           <pre>             <QRCode value="7355512127@axl" /></pre>
           
+          
           {/* <form onSubmit={handlePayment}>
             <div className="mb-3">
               <label htmlFor="cardNumber" className="form-label">Card Number</label>
