@@ -5,13 +5,27 @@ import './busdetail.css';
 const Busdetail = ({ buses }) => {
   const navigate = useNavigate();
 
-const handleSubmit=(bus)=>{
-  navigate('/payment', { state: { bus } });
-}
+  const handleSubmit = async (bus) => {
+    try {
+      const response = await fetch(`http://localhost:8000/update-bus/${bus.busId}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
 
+      if (!response.ok) {
+        const errorData = await response.json();
+        console.error('Failed to update available seats:', errorData.message);
+        throw new Error('Failed to update available seats');
+      }
 
-
-
+      const updatedBus = await response.json();
+      navigate('/payment', { state: { bus: updatedBus } });
+    } catch (error) {
+      console.error('Error updating available seats:', error);
+    }
+  };
 
   return (
     <div className="container">
@@ -28,10 +42,10 @@ const handleSubmit=(bus)=>{
                 <div className="card-body">
                   <h5 className="card-title">Date: {bus.date}</h5>
                   <p className="card-text">Price: {bus.price}</p>
-                  <p className="card-text">Total-seats: {bus.total_seat}</p>
-                  <p className="card-text">Seats Available: {bus.available_seat}</p>
-                  <p className="card-text">Bus-id: {bus.bus_id}</p>
-                  <button onClick={() => handleSubmit(bus)} className="btn btn-primary">Book Ticket</button> 
+                  <p className="card-text">Total seats: {bus.totalSeats}</p>
+                  <p className="card-text">Seats Available: {bus.availableSeats}</p>
+                  <p className="card-text">Bus ID: {bus.busId}</p>
+                  <button onClick={() => handleSubmit(bus)} className="btn btn-primary">Book Ticket</button>
                 </div>
               </div>
             </div>
@@ -43,4 +57,3 @@ const handleSubmit=(bus)=>{
 };
 
 export default Busdetail;
-
