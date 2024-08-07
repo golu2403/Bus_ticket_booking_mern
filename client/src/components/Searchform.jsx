@@ -11,6 +11,10 @@ const Searchform = ({ onSearch }) => {
     onSearch(fromStation, toStation, travelDate);
   };
 
+
+
+
+
   return (
     <form onSubmit={handleSubmit} className="search-form">
       <div className="form-group">
