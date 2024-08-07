@@ -1,6 +1,5 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
-import QRCode from 'qrcode.react';
 
 
 const Payment = () => {
@@ -21,17 +20,16 @@ const Payment = () => {
           {bus.source} to {bus.destination}
         </div>
         <div className="card-body">
-          <h5 className="card-title">Date: {bus.date}</h5>
+          <h5 className="card-title">Name : {bus._}</h5>
+          <p className="card-title">Date: {bus.date}</p>
           <p className="card-text">Price: {bus.price}</p>
           <p className="card-text">Starting Point: {bus.source}</p>
           <p className="card-text">Destination : {bus.destination}</p>
-          <p className="card-text">Total Seats: {bus.totalSeats}</p>
-          <p className="card-text">Seats Available: {bus.availableSeats}</p>
+          {/* <p className="card-text">Total Seats: {bus.totalSeats}</p>
+          <p className="card-text">Seats Available: {bus.availableSeats}</p> */}
+          <p className="card-text">Seat No: {bus._}</p>
           <p className="card-text">Bus ID: {bus.busId}</p>
-          <p className="card-text">QR Code for Payment:</p>
-          <pre>             <QRCode value="7355512127@axl" /></pre>
-          
-          {/* <form onSubmit={handlePayment}>
+          <form onSubmit={handlePayment}>
             <div className="mb-3">
               <label htmlFor="cardNumber" className="form-label">Card Number</label>
               <input type="text" className="form-control" id="cardNumber" required />
@@ -49,7 +47,7 @@ const Payment = () => {
               <input type="text" className="form-control" id="cvv" required />
             </div>
             <button type="submit" className="btn btn-primary">Pay Now</button>
-          </form> */}
+          </form>
         </div>
       </div>
     </div>
