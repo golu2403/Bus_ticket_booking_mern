@@ -1,75 +1,40 @@
+import React from 'react';
+import { useLocation } from 'react-router-dom';
+import QRCode from 'qrcode.react';
 
 
-//import styled from "styled-components";
+const Payment = () => {
+  const location = useLocation();
+  const { bus } = location.state;
 
-
-
-
-
-
-
-
-import * as React from 'react';
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import Modal from '@mui/material/Modal';
-
-const style = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 800,
-  bgcolor: 'background.paper',
-  border: '2px solid #000',
-  boxShadow: 24,
-  p: 4,
-};
-
-export  function Ticket() {
-  const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const handlePayment = (e) => {
+    e.preventDefault();
+    // Payment processing logic here
+    alert('Payment successful!');
+  };
 
   return (
-    <div>
-      <Button onClick={handleOpen}>Open modal</Button>
-      <Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <Box sx={style}>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-            Text in a modal
-          </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-          </Typography>
-        </Box>
-      </Modal>
+    <div className="container">
+      <h2 className="mt-4">Payment Details</h2>
+      <div className="card mt-4 mb-4 shadow-sm">
+        <div className="card-header">
+          {bus.source} to {bus.destination}
+        </div>
+        <div className="card-body">
+          <h5 className="card-title">Date: {bus.date}</h5>
+          <p className="card-text">Price: {bus.price}</p>
+          <p className="card-text">Starting Point: {bus.source}</p>
+          <p className="card-text">Destination : {bus.destination}</p>
+          <p className="card-text">Total Seats: {bus.totalSeats}</p>
+          <p className="card-text">Seats Available: {bus.availableSeats}</p>
+          <p className="card-text">Bus ID: {bus.busId}</p>
+          <p className="card-text">QR Code for Payment:</p>
+          <pre>             <QRCode value="7355512127@axl" /></pre>
+        </div>
+      </div>
     </div>
   );
-}
+};
 
+export default Payment;
 
-
-
-
-
-// function Ticket() {
-
-
-
-
-
-
-//     return(
-//         <div></div>  
-//     )
-// }
-
-
-// export {Ticket};
