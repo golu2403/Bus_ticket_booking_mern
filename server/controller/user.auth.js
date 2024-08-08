@@ -89,21 +89,8 @@ const usersignIn = async (req, res) => {
 
 
 
-const addEvent=async(req,res)=>{
-   try {
-      const client = await MongoClient.connect('mongodb://localhost:27017/');
-      const coll =  client.db('Bus_ticket_booking').collection('user_details');
-      const data=req.body;
-      console.log(data);
-      await coll.insertOne(data);
-      client.close();
-      res.status(200).send( 'Event is added' );   
-   } catch (error) {
-      console.error('Internal server error', error);
-    
-   }
-}
 
 
 
-module.exports={home,usersignUp,usersignIn,addEvent};
+
+module.exports={home,usersignUp,usersignIn};

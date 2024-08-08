@@ -15,19 +15,19 @@ const Navbar = () => {
                 <ul className="navbar-nav w-100 justify-content-between">
                     <div className="d-flex">
                         <li className="nav-item active mx-2">
-                            <a className="nav-link" href="./">Home <span className="sr-only"></span></a>
+                            <a className="nav-link" href="/">Home <span className="sr-only"></span></a>
                         </li>
                         <li className="nav-item mx-2">
-                            <a className="nav-link" href="#">Bus Tickets</a>
+                            <a className="nav-link" href="/adminsignup">Admin</a>
                         </li>
                         <li className="nav-item mx-2">
-                            <a className="nav-link" href="./signup">SignUp</a>
+                            <a className="nav-link" href="/signup">SignUp</a>
                         </li>
                         <li className="nav-item mx-2">
-                            <a className="nav-link" href="./signin">SignIn</a>
+                            <a className="nav-link" href="/signin">SignIn</a>
                         </li>
                         <li className="nav-item mx-2">
-                            <a className="nav-link" href="./About">About</a>
+                            <a className="nav-link" href="/About">About</a>
                         </li>
                     </div>
                 </ul>
