@@ -9,7 +9,7 @@ import Payment from './components/Payment';
 import AdminSignup from './admin/Adminsignup';
 import AdminSignin from './admin/Adminsignin';
 import AdminDashboard from './pages/AdminDashboard';
-import Protected from './components/Protected';
+
 
 export default function App() {
   return (
@@ -17,20 +17,19 @@ export default function App() {
       <BrowserRouter>
         <Navbar />
         <Routes>
-          {/* Redirect based on token presence */}
-          <Route path="/" element={<Protected Component={Home} />} />
-          <Route path="/payment" element={<Protected Component={Payment} />} />
-          <Route path="/admin-dashboard" element={<Protected Component={AdminDashboard} />} />
+          
+          <Route path="/" element={<Home/>} />
+          <Route path="/payment" element={<Payment />} />
+          <Route path="/admin-dashboard" element={<AdminDashboard/>} />
 
-          {/* Public Routes */}
+          
           <Route path="/about" element={<About />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/signin" element={<Signin />} />
           <Route path="/adminsignup" element={<AdminSignup />} />
           <Route path="/adminsignin" element={<AdminSignin />} />
 
-          {/* Catch-All Redirect */}
-          <Route path="*" element={<Navigate to="/" />} />
+        
         </Routes>
       </BrowserRouter>
     </div>

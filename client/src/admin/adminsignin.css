@@ -1,6 +1,6 @@
 /* Basic styles for the container and form */
 .container {
-    max-width: 500px;
+    max-width: 90%;
     margin: auto;
     padding: 30px;
     background-color: #ffffff;
@@ -67,7 +67,7 @@
   }
   
   /* Responsive styling */
-  @media (max-width: 768px) {
+  @media (max-width: 90%) {
     .container {
       padding: 20px;
     }

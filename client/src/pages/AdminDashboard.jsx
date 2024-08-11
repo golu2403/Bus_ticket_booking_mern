@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-
+import './adminDashboard.css';
 
 const AdminDashboard = () => {
   const [busDetails, setBusDetails] = useState({
@@ -10,7 +10,8 @@ const AdminDashboard = () => {
     availableSeats: '',
     totalSeats: '',
     date: '',
-    busId: ''
+    busId: '',
+    UPI_ID: ""
   });
 
   const [errorMessage, setErrorMessage] = useState('');
@@ -149,6 +150,17 @@ const AdminDashboard = () => {
                 id="busId"
                 placeholder="Enter bus ID"
                 value={busDetails.busId}
+                onChange={handleInput}
+              />
+            </div>
+            <div className="form-group mb-3">
+              <label htmlFor="busId">UPI ID</label>
+              <input
+                type="text"
+                className="form-control"
+                id="UPI_ID"
+                placeholder="Enter UPI ID"
+                value={busDetails.UPI_ID}
                 onChange={handleInput}
               />
             </div>
