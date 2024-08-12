@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { name } from 'nodeman/lib/mustache';
 
 const SignIn = () => {
   const [userinfo, setUserinfo] = useState({
@@ -29,8 +30,11 @@ const SignIn = () => {
       });
       const data = await response.json();
       if (data.valid === 1) {
-        localStorage.setItem('token', data.token); // Store the token
-        navigate("/");
+        localStorage.setItem('token', data.token); 
+        localStorage.setItem('name', data.name); 
+        console.log('Stored name:', data.name); 
+       
+        navigate("/"); 
       } else {
         setErrorMessage("Invalid user credentials");
       }

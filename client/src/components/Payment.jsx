@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import QRCode from 'qrcode.react';
 // import './payment.css';
@@ -7,10 +7,26 @@ const Payment = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const { bus } = location.state;
+  
 
   // State to hold the payment ID input and error message
   const [paymentId, setPaymentId] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+  const [userName, setUserName] = useState('');
+
+  useEffect(() => {
+    const name = localStorage.getItem('name');
+    if (name) {
+      setUserName(name);
+    } else {
+      
+      console.warn('User not found in localStorage');
+    }
+  }, []);
+
+
+
+
 
   const handlePayment = (e) => {
     e.preventDefault();
@@ -20,9 +36,7 @@ const Payment = () => {
       return;
     }
 
-    // Optional: Add logic here to verify paymentId with backend
-
-    // For now, we assume the payment ID is valid
+    
     alert('Payment successful!');
     
     // Redirect to the ticket section
@@ -33,8 +47,8 @@ const Payment = () => {
     <div className="container">
       <h2 className="mt-4">Payment Details</h2>
       <div className="card mt-4 mb-4 shadow-sm">
-        <div className="card-header">
-          {bus.source} to {bus.destination}
+      <div className="card-header">
+          {userName ? `Hello, ${userName}!` : 'Payment Details'} {bus.source} to {bus.destination}
         </div>
         <div className="card-body">
           <div className="bus-info">

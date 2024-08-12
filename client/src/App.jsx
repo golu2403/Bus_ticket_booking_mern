@@ -9,6 +9,7 @@ import Payment from './components/Payment';
 import AdminSignup from './admin/Adminsignup';
 import AdminSignin from './admin/Adminsignin';
 import AdminDashboard from './pages/AdminDashboard';
+import Ticket from './components/Ticket';
 
 
 export default function App() {
@@ -20,6 +21,7 @@ export default function App() {
           
           <Route path="/" element={<Home/>} />
           <Route path="/payment" element={<Payment />} />
+          <Route path="/ticket" element={<Ticket />} />
           <Route path="/admin-dashboard" element={<AdminDashboard/>} />
 
           

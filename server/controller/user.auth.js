@@ -42,7 +42,6 @@ const usersignUp = async (req, res) => {
 };
 
 
-
 const usersignIn = async (req, res) => {
   const { email, password } = req.body;
 
@@ -56,17 +55,26 @@ const usersignIn = async (req, res) => {
     client = await MongoClient.connect('mongodb://localhost:27017/', { useNewUrlParser: true, useUnifiedTopology: true });
     const coll = client.db('Bus_ticket_booking').collection('user_details');
 
+    
     const user = await coll.findOne({ email });
     if (!user) {
       return res.status(401).json({ valid: 0, message: 'Invalid email or password.' });
     }
 
+    
     const isValid = await bcrypt.compare(password, user.password);
 
     if (isValid) {
-      // Generate a token if authentication is successful
+    
       const token = jwt.sign({ email: user.email }, secretKey, { expiresIn: '500s' });
-      return res.status(200).json({ valid: 1, message: 'Sign-in successful.', token });
+
+     
+      return res.status(200).json({ 
+        valid: 1, 
+        message: 'Sign-in successful.', 
+        token, 
+        name: user.name  
+      });
     } else {
       return res.status(401).json({ valid: 0, message: 'Invalid email or password.' });
     }
