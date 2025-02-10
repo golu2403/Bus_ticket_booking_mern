@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import API_BASE_URL from '../config'; // Import backend URL from config.js
 import './busdetail.css';
 
 const Busdetail = ({ buses }) => {
@@ -7,7 +8,7 @@ const Busdetail = ({ buses }) => {
 
   const handleSubmit = async (bus) => {
     try {
-      const response = await fetch(`http://localhost:8000/update-bus/${bus.busId}`, {
+      const response = await fetch(`${API_BASE_URL}/update-bus/${bus.busId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -45,7 +46,9 @@ const Busdetail = ({ buses }) => {
                   <p className="card-text">Total seats: {bus.totalSeats}</p>
                   <p className="card-text">Seats Available: {bus.availableSeats}</p>
                   <p className="card-text">Bus ID: {bus.busId}</p>
-                  <button onClick={() => handleSubmit(bus)} className="btn btn-primary">Book Ticket</button>
+                  <button onClick={() => handleSubmit(bus)} className="btn btn-primary">
+                    Book Ticket
+                  </button>
                 </div>
               </div>
             </div>
