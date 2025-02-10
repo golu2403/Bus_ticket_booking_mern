@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { name } from 'nodeman/lib/mustache';
+import API_BASE_URL from '../config';
 
 const SignIn = () => {
   const [userinfo, setUserinfo] = useState({
@@ -21,7 +22,7 @@ const SignIn = () => {
       return setErrorMessage('Please fill out all fields.');
     }
     try {
-      const response = await fetch('http://localhost:8000/signin', {
+      const response = await fetch(`${API_BASE_URL}/signin`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
