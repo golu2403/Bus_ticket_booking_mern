@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './searchform.css'; // Import the CSS file for styling
 
+
 const Searchform = ({ onSearch }) => {
   const [fromStation, setFromStation] = useState('');
   const [toStation, setToStation] = useState('');
