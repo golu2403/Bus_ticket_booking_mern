@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Searchform from '../components/Searchform';
 import Busdetail from '../components/Busdetail';
+import API_BASE_URL from '../config'; // Import centralized backend URL
 import './home.css';
 
 const Home = () => {
@@ -8,7 +9,10 @@ const Home = () => {
 
   const fetchBusDetails = async (fromStation, toStation, travelDate) => {
     try {
-      const response = await fetch(`http://localhost:8000/api/getbusinfo?source=${fromStation}&destination=${toStation}&date=${travelDate}`);
+      const response = await fetch(
+        `${API_BASE_URL}/api/getbusinfo?source=${fromStation}&destination=${toStation}&date=${travelDate}`
+      );
+
       if (response.ok) {
         const data = await response.json();
         setBusDetails(data);
@@ -37,4 +41,3 @@ const Home = () => {
 };
 
 export default Home;
-
