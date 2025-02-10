@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { name } from 'nodeman/lib/mustache';
-import API_BASE_URL from '../config';
+import API_BASE_URL from '../config'; // Importing the correct backend URL
 
 const SignIn = () => {
   const [userinfo, setUserinfo] = useState({
